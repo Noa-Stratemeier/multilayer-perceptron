@@ -1,7 +1,7 @@
 import keras  # For loading the MNIST dataset.
 import numpy as np
 
-# MLP Hyperparameters.
+# MLP parameters.
 LAYER_SIZES = [784, 16, 16, 10]
 LEARNING_RATE = 0.05
 NUM_EPOCHS = 10
@@ -71,9 +71,9 @@ class MLP:
         Computes gradients for all weights and biases using backpropagation.
 
         This method performs a forward pass to get activations and pre-activations,
-        then computes the output error using the cross-entropy loss (with softmax), and
-        propagates this error backward through the network. It returns the gradients
-        for each weight and bias, which can be used for updating parameters during training.
+        then computes the output error using the loss (with softmax), and propagates
+        this error backward through the network. It returns the gradients for each
+        weight and bias, which can be used for updating parameters during training.
 
         Args:
             input_activations (numpy.ndarray): Input data of shape (input_size, batch_size).
@@ -249,7 +249,7 @@ if __name__ == "__main__":
     testing_images = testing_images.reshape(10000, 784).T / 255.0
     testing_labels = one_hot_encoded(testing_labels)
 
-    # Initialise, train and evaluate a new MLP using the given hyperparameters.
+    # Initialise, train and evaluate a new MLP using the given parameters.
     model = MLP(LAYER_SIZES, learning_rate=LEARNING_RATE)
     model.train(training_images, training_labels, epochs=NUM_EPOCHS, batch_size=MINI_BATCH_SIZE)
     accuracy = model.evaluate(testing_images, testing_labels)
